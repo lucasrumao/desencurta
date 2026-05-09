@@ -67,13 +67,31 @@
     }
 
     /* ── PREVIEW VIA BACKEND ── */
-    async function fetchPreview(url){
-      try{
-        const res=await fetch(`${API_BASE}/preview?url=${encodeURIComponent(url)}`,{signal:AbortSignal.timeout(10000)});
-        if(!res.ok) return null;
-        return await res.json();
-      }catch{return null;}
+    async function fetchPreview(url) {
+  try {
+    // 1. Tenta o seu backend primeiro
+    const res = await fetch(`${API_BASE}/preview?url=${encodeURIComponent(url)}`, {
+      signal: AbortSignal.timeout(10000)
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+
+    // 2. Se não veio imagem, tenta o Microlink só para isso
+    if (!data.image) {
+      try {
+        const ml = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`, {
+          signal: AbortSignal.timeout(6000)
+        });
+        const mlJson = await ml.json();
+        if (mlJson.status === 'success' && mlJson.data?.image?.url) {
+          data.image = mlJson.data.image.url;
+        }
+      } catch { /* sem imagem mesmo, tudo bem */ }
     }
+
+    return data;
+  } catch { return null; }
+}
 
     function buildPreviewBlock(meta){
       if(!meta||(!meta.title&&!meta.description&&!meta.image)) return '';
