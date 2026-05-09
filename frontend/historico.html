@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Histórico — Desencurta</title>
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/historico.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="brand-logo" onerror="this.style.display='none'" />
+        <span class="brand-name">Desencurta</span>
+      </a>
+      <div class="nav-links">
+        <a href="historico.html" class="nav-link active">Histórico</a>
+        <a href="como-funciona.html" class="nav-link">Como funciona</a>
+        <a href="quem-somos.html" class="nav-link">Quem somos</a>
+      </div>
+      <button class="nav-burger" onclick="window.location.href='index.html'" aria-label="Home">
+        <span class="material-symbols-outlined">home</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h1 class="page-title">Seu Histórico</h1>
+      <p class="page-subtitle">Acompanhe todos os links que você expandiu. Verifique a segurança e a procedência de cada destino com transparência total.</p>
+    </div>
+
+    <div class="search-row">
+      <div class="search-wrap">
+        <span class="search-icon material-symbols-outlined">search</span>
+        <input type="text" class="search-input" id="search-input" placeholder="Filtrar links..." />
+      </div>
+      <button class="btn-clear-all" id="btn-clear-all">
+        <span class="material-symbols-outlined">delete_sweep</span>
+        Limpar tudo
+      </button>
+    </div>
+
+    <div class="history-list" id="history-list"></div>
+
+    <!-- Cards informativos -->
+    <div class="info-grid">
+      <div class="info-card">
+        <!-- IMAGE PLACEHOLDER: imagem ilustrativa relatórios ~400x200px -->
+        <div class="img-ph" style="height:140px;margin-bottom:20px">
+          <span class="material-symbols-outlined">image</span>
+          <span>relatorios-card.jpg</span>
+        </div>
+        <div class="info-card-title">Relatórios Detalhados</div>
+        <div class="info-card-desc">Clique em qualquer link para ver a cadeia completa de redirecionamento e os testes de segurança realizados.</div>
+      </div>
+      <div class="info-card">
+        <!-- IMAGE PLACEHOLDER: imagem privacidade ~400x200px -->
+        <div class="img-ph" style="height:140px;margin-bottom:20px">
+          <span class="material-symbols-outlined">image</span>
+          <span>privacidade-card.jpg</span>
+        </div>
+        <div class="info-card-title">Privacidade em Primeiro Lugar</div>
+        <div class="info-card-desc">Seu histórico é armazenado localmente no seu navegador e nunca é compartilhado com terceiros.</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon"><span class="material-symbols-outlined">speed</span></div>
+        <div class="info-card-title">Velocidade Extrema</div>
+        <div class="info-card-desc">Nossa infraestrutura garante análises em milissegundos, sem latência perceptível para o usuário.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="footer-logo" onerror="this.style.display='none'" />
+        <span class="footer-name">Desencurta</span>
+      </div>
+      <span class="footer-copy">© 2026 Desencurta. Segurança e transparência digital.</span>
+      <div class="footer-links">
+        <a href="institucional.html#privacidade" class="footer-link">Privacidade</a>
+        <a href="institucional.html#termos" class="footer-link">Termos</a>
+        <a href="institucional.html#contato" class="footer-link">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+ <script src="js/historico.js"></script>
+</body>
+</html>

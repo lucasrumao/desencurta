@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Funciona — Desencurta</title>
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/como-funciona.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="brand-logo" onerror="this.style.display='none'" />
+        <span class="brand-name">Desencurta</span>
+      </a>
+      <div class="nav-links">
+        <a href="historico.html" class="nav-link">Histórico</a>
+        <a href="como-funciona.html" class="nav-link active">Como funciona</a>
+        <a href="quem-somos.html" class="nav-link">Quem somos</a>
+      </div>
+      <button class="nav-burger" onclick="window.location.href='index.html'">
+        <span class="material-symbols-outlined">home</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="eyebrow">Guia passo a passo</span>
+      <h1 class="hero-title">Simplicidade é a nossa<br/><em>maior segurança</em></h1>
+      <p class="hero-subtitle">Entenda como o Desencurta protege sua navegação analisando cada camada oculta por trás de links encurtados ou suspeitos.</p>
+    </section>
+
+    <!-- STEPS -->
+    <section class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-content">
+          <div class="step-num">
+            <div class="step-num-circle">01</div>
+            <span class="step-num-label">Início</span>
+          </div>
+          <h2 class="step-title">Cole o link</h2>
+          <p class="step-desc">Copie qualquer URL curta ou suspeita e cole em nossa barra de busca. Não importa a origem — bit.ly, t.co, tinyurl, amzn.to — nós estamos prontos para analisá-la.</p>
+        </div>
+        <div>
+          <!-- IMAGE PLACEHOLDER: screenshot da interface de input ~560x320px -->
+          <div class="step-mockup">
+            <div class="mockup-bar">
+              <span class="material-symbols-outlined">link</span>
+              <div class="mockup-input"></div>
+              <div class="mockup-btn">Expandir</div>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--outline);text-align:center;margin-top:10px;font-family:var(--mono)"><!-- Substituir pelo screenshot: passo1-interface.jpg --></p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step reverse">
+        <div class="step-content">
+          <div class="step-num">
+            <div class="step-num-circle">02</div>
+            <span class="step-num-label">Processo</span>
+          </div>
+          <h2 class="step-title">Analisamos a cadeia</h2>
+          <p class="step-desc">Nossa tecnologia percorre todo o caminho do link, identificando cada redirecionamento intermediário (301, 302 ou 307) antes de chegar ao destino final.</p>
+          <div class="step-checks">
+            <div class="step-check"><span class="material-symbols-outlined">check_circle</span>Mapeamento de 100% dos saltos</div>
+            <div class="step-check"><span class="material-symbols-outlined">check_circle</span>Identificação de scripts ocultos</div>
+            <div class="step-check"><span class="material-symbols-outlined">check_circle</span>Suporte a até 15 redirecionamentos</div>
+          </div>
+        </div>
+        <div>
+          <div class="chain-mockup">
+            <div class="cm-item"><div class="cm-spine"><div class="cm-dot start"></div><div class="cm-line"></div></div><div class="cm-content"><div class="cm-url">bit.ly/abc123</div><span class="cm-badge blue">301 Permanente</span></div></div>
+            <div class="cm-item"><div class="cm-spine"><div class="cm-dot middle"></div><div class="cm-line"></div></div><div class="cm-content"><div class="cm-url">redirect.tracker.io/r?u=...</div><span class="cm-badge blue">302 Temporário</span></div></div>
+            <div class="cm-item"><div class="cm-spine"><div class="cm-dot end"></div></div><div class="cm-content"><div class="cm-url" style="color:var(--green);font-weight:500">www.destino-final.com/pagina</div><span class="cm-badge green">200 OK — Destino final</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-content">
+          <div class="step-num">
+            <div class="step-num-circle">03</div>
+            <span class="step-num-label">Segurança</span>
+          </div>
+          <h2 class="step-title">Verificamos ameaças</h2>
+          <p class="step-desc">Cruzamos o destino final com múltiplos critérios de segurança em tempo real, detectando phishing, malware e sites maliciosos instantaneamente.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--outline-v);border-radius:var(--r-full);font-size:13px;color:var(--secondary)"><span class="material-symbols-outlined" style="font-size:16px;color:var(--red)">report</span>Malware</div>
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--green-border);border-radius:var(--r-full);font-size:13px;color:var(--green)"><span class="material-symbols-outlined" style="font-size:16px">verified_user</span>Protegido</div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-mockup">
+            <div class="sec-row"><div class="sec-row-left"><span class="material-symbols-outlined">verified</span>Certificado SSL</div><span class="sec-row-val">VÁLIDO</span></div>
+            <div class="sec-row"><div class="sec-row-left"><span class="material-symbols-outlined">gpp_good</span>Links Maliciosos</div><span class="sec-row-val">NENHUM</span></div>
+            <div class="sec-row"><div class="sec-row-left"><span class="material-symbols-outlined">policy</span>Phishing Check</div><span class="sec-row-val">LIMPO</span></div>
+            <div class="sec-row"><div class="sec-row-left"><span class="material-symbols-outlined">dns</span>Status HTTP</div><span class="sec-row-val">200 OK</span></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CTA FINAL -->
+    <div style="padding:0 40px;max-width:var(--ctr);margin:0 auto 0">
+      <div class="cta-dark">
+        <div class="cta-dark-icon"><span class="material-symbols-outlined">bolt</span></div>
+        <span class="cta-dark-eyebrow">Resultado Final</span>
+        <h2 class="cta-dark-title">Navegue com segurança</h2>
+        <p class="cta-dark-desc">Ao final do processo, você recebe um relatório completo e pode decidir se deseja prosseguir para o site de destino com total consciência dos riscos.</p>
+        <a href="index.html" class="btn-cta"><span class="material-symbols-outlined">arrow_forward</span>Expandir um link agora</a>
+      </div>
+    </div>
+
+    <!-- VALUE CARDS -->
+    <section class="values">
+      <div class="values-grid">
+        <div class="val-card">
+          <div class="val-icon"><span class="material-symbols-outlined">search</span></div>
+          <div class="val-title">Transparência</div>
+          <div class="val-desc">Veja o que acontece nos bastidores de cada link antes mesmo de clicar.</div>
+        </div>
+        <div class="val-card">
+          <div class="val-icon"><span class="material-symbols-outlined">lock</span></div>
+          <div class="val-title">Privacidade</div>
+          <div class="val-desc">Não rastreamos sua navegação. Nosso foco é puramente a sua segurança digital.</div>
+        </div>
+        <div class="val-card">
+          <div class="val-icon"><span class="material-symbols-outlined">speed</span></div>
+          <div class="val-title">Velocidade</div>
+          <div class="val-desc">Análises complexas em frações de segundo para não atrapalhar seu ritmo.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="footer-logo" onerror="this.style.display='none'" />
+        <span class="footer-name">Desencurta</span>
+      </div>
+      <span class="footer-copy">© 2026 Desencurta. Segurança e transparência digital.</span>
+      <div class="footer-links">
+        <a href="institucional.html#privacidade" class="footer-link">Privacidade</a>
+        <a href="institucional.html#termos" class="footer-link">Termos</a>
+        <a href="institucional.html#contato" class="footer-link">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

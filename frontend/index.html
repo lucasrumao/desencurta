@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desencurta — Veja para onde um link realmente leva</title>
+  <meta name="description" content="Expanda URLs encurtadas com segurança. Veja o destino final, cadeia de redirecionamentos e análise de segurança." />
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="brand-logo" onerror="this.style.display='none'" />
+        <span class="brand-name">Desencurta</span>
+      </a>
+      <div class="nav-links">
+        <button class="nav-link" onclick="openPanel('p-history')">Histórico</button>
+        <a class="nav-link" href="como-funciona.html">Como funciona</a>
+        <a class="nav-link" href="quem-somos.html">Quem somos</a>
+      </div>
+      <button class="nav-burger" onclick="openPanel('p-mobile')" aria-label="Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Segurança Digital Ativa</span>
+      </div>
+      <h1 class="hero-title">Veja para onde um link<br/><em>realmente</em> leva</h1>
+
+      <div class="input-wrap">
+        <div class="glass-input">
+          <span class="material-symbols-outlined">link</span>
+          <input type="url" id="url-input" placeholder="Cole aqui seu link encurtado..." autocomplete="off" spellcheck="false" />
+          <button class="btn-expand" id="btn-expand">
+            Expandir
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="supported">
+        <span class="sup-label">Suporta:</span>
+        <div class="sup-tags">
+          <span class="stag" data-url="https://bit.ly/3OIaVsE">bit.ly</span>
+          <span class="stag" data-url="https://t.co/example">t.co</span>
+          <span class="stag" data-url="https://tinyurl.com/example">tinyurl.com</span>
+          <span class="stag" data-url="https://amzn.to/example">amzn.to</span>
+          <span class="stag" data-url="https://rebrand.ly/example">rebrand.ly</span>
+          <span class="stag" data-url="https://youtu.be/dQw4w9WgXcQ">youtu.be</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="result-section" id="result-section">
+      <div id="result-container"></div>
+    </section>
+
+    <!-- BENTO -->
+    <section class="features">
+      <div class="bento">
+        <div class="bcard col-8">
+          <div class="bcard-icon"><span class="material-symbols-outlined">radar</span></div>
+          <h3 class="bcard-title">Scanner de Destino Profundo</h3>
+          <p class="bcard-desc">Nossa tecnologia analisa cada redirecionamento para garantir que o destino final seja seguro e livre de ameaças.</p>
+          <!-- IMAGE PLACEHOLDER: ~300x200px fundo decorativo do card -->
+          <div class="img-ph" style="position:absolute;right:0;bottom:0;width:45%;height:100%;border:none;border-radius:0;opacity:.07; background-image: url('assets/img/foto-1.png');">          </div>
+        </div>
+        <div class="bcard col-4 inv">
+          <div class="bcard-icon"><span class="material-symbols-outlined">history</span></div>
+          <h3 class="bcard-title" style="font-size:1.4rem">Histórico Local</h3>
+          <p class="bcard-desc">Links verificados salvos apenas no seu navegador. Privacidade total, sem rastreamento nos nossos servidores.</p>
+        </div>
+        <div class="bcard col-4">
+          <div class="bcard-icon"><span class="material-symbols-outlined">visibility</span></div>
+          <h3 class="bcard-title" style="font-size:1.4rem">Preview Instantâneo</h3>
+          <p class="bcard-desc">Visualize título, descrição e imagem da página antes mesmo de clicar.</p>
+        </div>
+        <div class="bcard col-8" style="display:flex;gap:32px;align-items:center;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <div class="bcard-icon"><span class="material-symbols-outlined">shield</span></div>
+            <h3 class="bcard-title" style="font-size:1.4rem">Relatórios de Segurança</h3>
+            <p class="bcard-desc">Status SSL, reputação do domínio e possíveis ameaças detectadas em tempo real.</p>
+          </div>
+          <!-- IMAGE PLACEHOLDER: ~256x128px -->
+          <div class="img-ph" style="width:min(256px,100%);height:128px;flex-shrink:0; background-position: center; background-size: cover; background-repeat: no-repeat; border: none; background-image: url('assets/img/foto-2.png');">
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-inner">
+        <h2 class="cta-title">Pronto para navegar com segurança?</h2>
+        <p class="cta-desc">Verifique qualquer link suspeito antes de clicar. Grátis, sem anúncios, sem rastreamento.</p>
+        <div class="cta-btns">
+          <button class="btn-primary" onclick="document.getElementById('url-input').focus();window.scrollTo({top:0,behavior:'smooth'})">Começar agora</button>
+          <button class="btn-ghost" onclick="window.location.href='como-funciona.html'">Como funciona</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="footer-logo" onerror="this.style.display='none'" />
+        <span class="footer-name">Desencurta</span>
+      </div>
+      <span class="footer-copy">© 2026 Desencurta. Segurança e transparência digital.</span>
+      <div class="footer-links">
+        <a href="institucional.html#privacidade" class="footer-link">Privacidade</a>
+        <a href="institucional.html#termos" class="footer-link">Termos</a>
+        <a href="institucional.html#contato" class="footer-link">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
+
+  <!-- PANEL: HISTÓRICO -->
+  <aside class="panel" id="p-history">
+    <div class="panel-header">
+      <span class="panel-title">Histórico</span>
+      <button class="panel-close" onclick="closeAllPanels()"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="panel-body" id="history-body"></div>
+  </aside>
+
+  <!-- PANEL: ABOUT -->
+  <aside class="panel" id="p-about">
+    <div class="panel-header">
+      <span class="panel-title">Quem somos</span>
+      <button class="panel-close" onclick="closeAllPanels()"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="panel-body">
+      <div class="ab-logo"><img src="assets/img/logo.png" alt="" onerror="this.style.display='none'" /></div>
+      <h3 class="ab-title">Desencurta</h3>
+      <p class="ab-text">Criado com um objetivo simples: deixar a internet mais transparente e segura para todo mundo. O Desencurta existe para que qualquer pessoa possa verificar um link suspeito antes de clicar.</p>
+      <div class="ab-vals">
+        <div class="ab-val"><div class="ab-val-ico"><span class="material-symbols-outlined">shield</span></div><div><div class="ab-val-title">Segurança primeiro</div><div class="ab-val-desc">Toda análise pensada para proteger você.</div></div></div>
+        <div class="ab-val"><div class="ab-val-ico"><span class="material-symbols-outlined">lock</span></div><div><div class="ab-val-title">Privacidade garantida</div><div class="ab-val-desc">Sem anúncios, sem rastreamento.</div></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- PANEL: MOBILE MENU -->
+  <aside class="panel" id="p-mobile">
+    <div class="panel-header">
+      <span class="panel-title">Menu</span>
+      <button class="panel-close" onclick="closeAllPanels()"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="panel-body">
+      <div class="mob-list">
+        <button class="mob-btn" onclick="closeAllPanels();openPanel('p-history')"><span class="material-symbols-outlined">history</span>Histórico</button>
+        <button class="mob-btn" onclick="location.href='como-funciona.html'"><span class="material-symbols-outlined">help_outline</span>Como funciona</button>
+        <button class="mob-btn" onclick="location.href='quem-somos.html'"><span class="material-symbols-outlined">group</span>Quem somos</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+<script src="js/home.js"></script>
+</body>
+</html>

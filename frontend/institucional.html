@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Políticas e Contato — Desencurta</title>
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/institucional.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="brand-logo" onerror="this.style.display='none'" />
+        <span class="brand-name">Desencurta</span>
+      </a>
+      <div class="nav-links">
+        <a href="historico.html" class="nav-link">Histórico</a>
+        <a href="como-funciona.html" class="nav-link">Como funciona</a>
+        <a href="quem-somos.html" class="nav-link">Quem somos</a>
+      </div>
+      <button class="nav-burger" onclick="window.location.href='index.html'">
+        <span class="material-symbols-outlined">home</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrap">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <span class="sidebar-label">Institucional</span>
+        <nav class="sidebar-nav">
+          <button class="sidebar-link active" id="nav-priv" onclick="scrollTo('privacidade')">
+            <span class="material-symbols-outlined">security</span>
+            Privacidade
+          </button>
+          <button class="sidebar-link" id="nav-termos" onclick="scrollTo('termos')">
+            <span class="material-symbols-outlined">description</span>
+            Termos de Uso
+          </button>
+          <button class="sidebar-link" id="nav-contato" onclick="scrollTo('contato')">
+            <span class="material-symbols-outlined">mail</span>
+            Contato
+          </button>
+        </nav>
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Segurança em primeiro lugar</div>
+          <div class="sidebar-card-desc">Seus dados são protegidos e nunca compartilhados com terceiros. O Desencurta não coleta informações pessoais.</div>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="content">
+
+        <!-- PRIVACIDADE -->
+        <section class="inst-section" id="privacidade">
+          <h1 class="inst-title">Política de Privacidade</h1>
+          <p class="inst-lead">A sua privacidade é fundamental para nós. Esta política explica como coletamos, usamos e protegemos suas informações ao utilizar o Desencurta.</p>
+
+          <div class="prose">
+            <p>O Desencurta foi construído com privacidade em mente desde o primeiro dia. Não exibimos anúncios, não vendemos dados e não rastreamos sua navegação.</p>
+
+            <div class="highlight-box">
+              <div class="highlight-title">Como usamos seus dados</div>
+              <div class="highlight-list">
+                <div class="highlight-item">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  Solicitamos apenas as informações estritamente necessárias para o funcionamento do serviço — a URL que você deseja expandir.
+                </div>
+                <div class="highlight-item">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  Os links expandidos não são armazenados em nossos servidores. O histórico fica salvo exclusivamente no seu navegador (localStorage).
+                </div>
+                <div class="highlight-item">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  Não compartilhamos nenhuma informação de identificação pessoal com terceiros, parceiros ou anunciantes.
+                </div>
+                <div class="highlight-item">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  Utilizamos logs mínimos de servidor apenas para monitoramento de segurança e prevenção de abusos, sem vinculação a identidades.
+                </div>
+              </div>
+            </div>
+
+            <h3>Cookies e armazenamento local</h3>
+            <p>O Desencurta não utiliza cookies de rastreamento. O único armazenamento local é o histórico de links que você expande, salvo no seu próprio dispositivo e que pode ser apagado a qualquer momento pela página de Histórico.</p>
+
+            <h3>Serviços de terceiros</h3>
+            <p>Para exibir o preview das páginas de destino, utilizamos a API pública do Microlink. Ao expandir um link, a URL de destino é enviada ao Microlink para buscar metadados como título e imagem. Consulte a política de privacidade do Microlink em <span style="color:var(--blue)">microlink.io/privacy</span>.</p>
+
+            <h3>Seus direitos</h3>
+            <p>Você tem total controle sobre seus dados locais. Para apagar todo o histórico, acesse a página de Histórico e clique em "Limpar tudo". Não há conta, não há cadastro, não há dado nosso para deletar.</p>
+          </div>
+        </section>
+
+        <!-- TERMOS -->
+        <section class="inst-section" id="termos">
+          <h2 class="inst-title">Termos de Uso</h2>
+          <p class="inst-lead">Ao acessar e utilizar o Desencurta, você concorda com os seguintes termos. Reservamo-nos o direito de atualizá-los periodicamente.</p>
+
+          <div class="prose">
+            <p>O Desencurta é um serviço gratuito de expansão e análise de URLs encurtadas. Nosso objetivo é ajudar usuários a identificar o destino real de links antes de acessá-los.</p>
+          </div>
+
+          <div class="terms-grid">
+            <div class="term-card">
+              <div class="term-card-title">Uso Aceitável</div>
+              <div class="term-card-desc">O serviço deve ser utilizado apenas para verificação legítima de links. É proibido o uso automatizado em massa sem autorização prévia.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-card-title">Isenção de Responsabilidade</div>
+              <div class="term-card-desc">O Desencurta não se responsabiliza pelo conteúdo dos sites de terceiros acessados através dos links expandidos. A análise de segurança é orientativa.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-card-title">Disponibilidade do Serviço</div>
+              <div class="term-card-desc">Não garantimos disponibilidade ininterrupta. O serviço pode ficar indisponível por manutenção ou problemas técnicos sem aviso prévio.</div>
+            </div>
+            <div class="term-card">
+              <div class="term-card-title">Propriedade Intelectual</div>
+              <div class="term-card-desc">Todo o código, design e conteúdo do Desencurta são protegidos. É proibida a reprodução sem autorização expressa.</div>
+            </div>
+          </div>
+
+          <div class="prose" style="margin-top:24px">
+            <h3>Limitações da análise de segurança</h3>
+            <p>Nossa análise de segurança é baseada em critérios técnicos como HTTPS, estrutura do domínio e TLD. Ela é uma ferramenta de apoio, não uma garantia absoluta. Sempre use o bom senso ao acessar links de fontes desconhecidas.</p>
+
+            <h3>Modificações nos termos</h3>
+            <p>Podemos atualizar estes termos a qualquer momento. O uso continuado do serviço após alterações implica na aceitação dos novos termos.</p>
+          </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section class="inst-section" id="contato">
+          <h2 class="inst-title">Fale Conosco</h2>
+          <p class="inst-lead">Tem alguma dúvida, sugestão ou encontrou um bug? Fique à vontade para entrar em contato.</p>
+
+          <div class="contact-grid">
+
+            <!-- FORMULÁRIO -->
+            <div class="form">
+              <div class="form-group">
+                <label class="form-label">Nome completo</label>
+                <input type="text" class="form-input" placeholder="Seu nome" id="form-name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-input" placeholder="seu@email.com" id="form-email" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Mensagem</label>
+                <textarea class="form-textarea" placeholder="Como podemos ajudar?" id="form-msg"></textarea>
+              </div>
+              <button class="btn-submit" onclick="submitForm()">
+                Enviar mensagem
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+
+            <!-- INFO + MAP -->
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-ico"><span class="material-symbols-outlined">alternate_email</span></div>
+                <div>
+                  <div class="contact-item-title">E-mail</div>
+                  <div class="contact-item-desc">
+                    contato@desencurta.com.br<br />
+                    ajuda@desencurta.com.br
+                  </div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico"><span class="material-symbols-outlined">schedule</span></div>
+                <div>
+                  <div class="contact-item-title">Tempo de resposta</div>
+                  <div class="contact-item-desc">Geralmente respondemos em até 48 horas nos dias úteis.</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico"><span class="material-symbols-outlined">code</span></div>
+                <div>
+                  <div class="contact-item-title">Reportar um bug</div>
+                  <div class="contact-item-desc">Prefere abrir uma issue? Acesse nosso repositório no GitHub.</div>
+                </div>
+              </div>
+
+              <!-- MAP PLACEHOLDER -->
+              <div class="map-ph">
+                <span class="material-symbols-outlined">location_on</span>
+                <span>Mapa — São Paulo, SP</span>
+                <!-- Substituir por iframe do Google Maps ou outro mapa -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div><!-- /content -->
+    </div><!-- /page-wrap -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Desencurta" class="footer-logo" onerror="this.style.display='none'" />
+        <span class="footer-name">Desencurta</span>
+      </div>
+      <span class="footer-copy">© 2026 Desencurta. Segurança e transparência digital.</span>
+      <div class="footer-links">
+        <a href="#privacidade" class="footer-link">Privacidade</a>
+        <a href="#termos" class="footer-link">Termos</a>
+        <a href="#contato" class="footer-link">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/institucional.js"></script>
+</body>
+</html>
