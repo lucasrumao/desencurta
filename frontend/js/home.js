@@ -66,21 +66,20 @@
       return{checks,score,cls,label:score===4?'Seguro':score>=2?'Atenção':'Suspeito'};
     }
 
-    /* ── MICROLINK PREVIEW ── */
+    /* ── PREVIEW VIA BACKEND ── */
     async function fetchPreview(url){
       try{
-        const res=await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}&meta=true`,{signal:AbortSignal.timeout(8000)});
-        const json=await res.json();
-        if(json.status==='success') return json.data;
-        return null;
+        const res=await fetch(`${API_BASE}/preview?url=${encodeURIComponent(url)}`,{signal:AbortSignal.timeout(10000)});
+        if(!res.ok) return null;
+        return await res.json();
       }catch{return null;}
     }
 
     function buildPreviewBlock(meta){
-      if(!meta) return '';
+      if(!meta||(!meta.title&&!meta.description&&!meta.image)) return '';
       const title=meta.title||'';
       const desc=meta.description||'';
-      const imgUrl=meta.image?.url||'';
+      const imgUrl=meta.image||'';
       const imgHtml=imgUrl
         ? `<img class="preview-img" src="${imgUrl}" alt="${title}" onerror="this.parentElement.innerHTML='<div class=preview-placeholder><span class=material-symbols-outlined>image</span></div>'" />`
         : `<div class="preview-placeholder"><span class="material-symbols-outlined">image</span></div>`;

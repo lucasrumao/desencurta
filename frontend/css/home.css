@@ -1,4 +1,4 @@
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+ *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --bg:#141313;--surface:#141313;--s-low:#1c1b1b;--s-container:#201f1f;
       --s-high:#2b2a2a;--s-highest:#363434;--s-lowest:#0f0e0e;
@@ -24,7 +24,7 @@
     .brand-logo{height:30px;width:auto;object-fit:contain}
     .brand-name{font-family:var(--serif);font-size:1.15rem;color:var(--primary);font-style:italic}
     .nav-links{display:flex;align-items:center;gap:4px}
-    .nav-link{font-size:.875rem;color:var(--secondary);background:none;border:none;font-family:var(--font);cursor:pointer;padding:6px 12px;border-radius:var(--r);transition:background 200ms var(--ease),color 200ms var(--ease); text-decoration:none;}
+    .nav-link{font-size:.875rem;color:var(--secondary);background:none;border:none;font-family:var(--font);cursor:pointer;padding:6px 12px;border-radius:var(--r);transition:background 200ms var(--ease),color 200ms var(--ease)}
     .nav-link:hover{background:var(--s-container);color:var(--primary)}
     .nav-burger{display:none;background:none;border:none;color:var(--secondary);cursor:pointer;padding:6px;border-radius:var(--r);transition:background 200ms}
     .nav-burger:hover{background:var(--s-container)}
@@ -109,7 +109,7 @@
     .preview-img{width:96px;height:68px;object-fit:cover;border-radius:var(--r);border:1px solid var(--outline-v);flex-shrink:0;background:var(--s-high)}
     .preview-placeholder{width:96px;height:68px;border-radius:var(--r);border:1px dashed var(--outline-v);flex-shrink:0;background:var(--s-high);display:flex;align-items:center;justify-content:center;color:var(--outline)}
     .preview-title{font-size:14px;font-weight:500;color:var(--primary);margin-bottom:4px;line-height:1.4}
-    .preview-desc{font-size:12px;color:var(--outline);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .preview-desc{font-size:12px;color:var(--outline);line-height:1.5;display:-webkit-box;line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .preview-url{font-size:11px;color:var(--blue);margin-top:4px;font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
     /* URL BLOCK */
