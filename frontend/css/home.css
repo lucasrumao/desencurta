@@ -24,7 +24,7 @@
     .brand-logo{height:30px;width:auto;object-fit:contain}
     .brand-name{font-family:var(--serif);font-size:1.15rem;color:var(--primary);font-style:italic}
     .nav-links{display:flex;align-items:center;gap:4px}
-    .nav-link{font-size:.875rem;color:var(--secondary);background:none;border:none;font-family:var(--font);cursor:pointer;padding:6px 12px;border-radius:var(--r);transition:background 200ms var(--ease),color 200ms var(--ease)}
+    .nav-link{font-size:.875rem;color:var(--secondary);background:none;border:none;font-family:var(--font);cursor:pointer;padding:6px 12px;border-radius:var(--r);transition:background 200ms var(--ease),color 200ms var(--ease); text-decoration:none}
     .nav-link:hover{background:var(--s-container);color:var(--primary)}
     .nav-burger{display:none;background:none;border:none;color:var(--secondary);cursor:pointer;padding:6px;border-radius:var(--r);transition:background 200ms}
     .nav-burger:hover{background:var(--s-container)}
