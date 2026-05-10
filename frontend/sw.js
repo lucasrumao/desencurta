@@ -1,4 +1,4 @@
-const CACHE_NAME = 'unravel-v1';
+const CACHE_NAME = 'desencurta-v3';
 const STATIC_ASSETS = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
