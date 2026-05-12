@@ -45,6 +45,41 @@
     .btn-clear-all{display:flex;align-items:center;gap:8px;padding:14px 20px;background:none;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);color:var(--secondary);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:background 200ms,border-color 200ms;white-space:nowrap}
     .btn-clear-all:hover{background:var(--s-container);border-color:rgba(255,255,255,.14)}
 
+    /* EYEBROW */
+.page-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 14px;
+  border-radius:var(--r-full);
+  background:var(--s-container);
+  border:1px solid rgba(255,255,255,.06);
+  margin-bottom:16px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--secondary);
+}
+.page-eyebrow-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(.85)}
+}
+
+/* DIVIDER */
+.info-divider{
+  height:1px;
+  background:rgba(255,255,255,.06);
+  margin:64px 0 48px;
+}
+
     /* HISTORY LIST */
     .history-list{display:flex;flex-direction:column;gap:12px}
 
@@ -55,8 +90,8 @@
     .btn-go-home{display:inline-flex;align-items:center;gap:8px;background:var(--primary-dim);color:var(--primary-fg);border:none;border-radius:var(--r-full);padding:12px 24px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:opacity 200ms}
     .btn-go-home:hover{opacity:.88}
 
-    .h-item{background:var(--s-container);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background 200ms,border-color 200ms;cursor:pointer}
-    .h-item:hover{background:var(--s-high);border-color:rgba(255,255,255,.1)}
+    .h-item{background:var(--s-container);border:1px solid rgba(255,255,255,.06);border-radius:1rem;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background 300ms var(--ease),border-color 300ms var(--ease),transform 200ms var(--ease);cursor:pointer}
+    .h-item:hover{background:var(--s-high);border-color:rgba(255,255,255,.12);transform:translateY(-1px)}
     .h-item-left{display:flex;align-items:center;gap:16px;flex:1;min-width:0}
     .h-icon{width:44px;height:44px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .h-icon.safe{background:var(--green-bg);color:var(--green)}
@@ -82,8 +117,8 @@
 
     /* BENTO CARDS INFERIORES */
     .info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:64px}
-    .info-card{background:var(--s-low);border:1px solid rgba(255,255,255,.06);border-radius:1.5rem;padding:28px;transition:background 250ms}
-    .info-card:hover{background:var(--s-container)}
+    .info-card{background:var(--s-low);border:1px solid rgba(255,255,255,.06);border-radius:1.5rem;padding:32px;transition:background 250ms var(--ease),border-color 250ms var(--ease),transform 200ms var(--ease)}
+    .info-card:hover{background:var(--s-container);border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
     .info-card-icon{width:44px;height:44px;border-radius:var(--r);background:var(--s-high);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--on-variant);margin-bottom:20px}
     .info-card-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--primary);margin-bottom:8px}
     .info-card-desc{font-size:14px;color:var(--secondary);line-height:1.65}

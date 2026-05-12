@@ -135,18 +135,80 @@ async function fetchPreview(url) {
       s.classList.add('visible');
       setTimeout(()=>s.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
     }
-    function showLoading(){
-      showResult(`<div class="loading-card"><div class="spinner"></div><div class="loading-label">Expandindo URL… (pode levar até 60s na primeira vez)</div><div class="l-steps"><div class="l-step active" id="ls1"><span class="l-dot"></span>Resolvendo redirecionamentos</div><div class="l-step" id="ls2"><span class="l-dot"></span>Coletando metadados</div><div class="l-step" id="ls3"><span class="l-dot"></span>Analisando segurança</div></div></div>`);
-      let step=1;
-      const iv=setInterval(()=>{
-        const p=document.getElementById(`ls${step}`);
-        if(p){p.classList.remove('active');p.classList.add('done');}
-        step++;
-        const c=document.getElementById(`ls${step}`);
-        if(c)c.classList.add('active');
-        if(step>=3)clearInterval(iv);
-      },700);
+   function showLoading(){
+  showResult(`
+    <div class="loading-card">
+      <div class="loader-icon-wrap">
+        <span class="material-symbols-outlined loader-icon-bg">link</span>
+        <span class="material-symbols-outlined loader-icon-fg">travel_explore</span>
+      </div>
+      <div class="loader-progress-track">
+        <div class="loader-progress-fill" id="loader-bar"></div>
+      </div>
+      <div class="loader-steps">
+        <div class="loader-step" id="lst1">
+          <div class="loader-step-icon"><span class="material-symbols-outlined">travel_explore</span></div>
+          <div class="loader-step-info">
+            <div class="loader-step-title">Resolvendo redirecionamentos</div>
+            <div class="loader-step-desc">Seguindo cada salto até o destino final</div>
+          </div>
+          <div class="loader-step-status" id="lss1"></div>
+        </div>
+        <div class="loader-step" id="lst2">
+          <div class="loader-step-icon"><span class="material-symbols-outlined">pageview</span></div>
+          <div class="loader-step-info">
+            <div class="loader-step-title">Coletando metadados</div>
+            <div class="loader-step-desc">Buscando título, descrição e preview</div>
+          </div>
+          <div class="loader-step-status" id="lss2"></div>
+        </div>
+        <div class="loader-step" id="lst3">
+          <div class="loader-step-icon"><span class="material-symbols-outlined">security</span></div>
+          <div class="loader-step-info">
+            <div class="loader-step-title">Analisando segurança</div>
+            <div class="loader-step-desc">Verificando SSL, domínio e ameaças</div>
+          </div>
+          <div class="loader-step-status" id="lss3"></div>
+        </div>
+      </div>
+    </div>
+  `);
+
+  /* Ativa etapas em sequência */
+  const barWidths = ['30%', '65%', '85%'];
+  const icons = ['travel_explore', 'pageview', 'security'];
+  let step = 1;
+
+  document.getElementById('lst1').classList.add('active');
+  document.getElementById('loader-bar').style.width = barWidths[0];
+
+  const iv = setInterval(() => {
+    /* Marca etapa anterior como concluída */
+    const prev = document.getElementById(`lst${step}`);
+    const prevStatus = document.getElementById(`lss${step}`);
+    if (prev) {
+      prev.classList.remove('active');
+      prev.classList.add('done');
     }
+    if (prevStatus) {
+      prevStatus.innerHTML = `<span class="material-symbols-outlined" style="font-size:16px;color:var(--green)">check_circle</span>`;
+    }
+
+    step++;
+    if (step > 3) { clearInterval(iv); return; }
+
+    /* Ativa próxima etapa */
+    const cur = document.getElementById(`lst${step}`);
+    const bar = document.getElementById('loader-bar');
+    if (cur) cur.classList.add('active');
+    if (bar) bar.style.width = barWidths[step - 1];
+
+    /* Troca ícone central */
+    const fgIcon = document.querySelector('.loader-icon-fg');
+    if (fgIcon) fgIcon.textContent = icons[step - 1];
+
+  }, 750);
+}
     function showError(title,detail){
       showResult(`<div class="error-card"><div class="err-ico"><span class="material-symbols-outlined">error</span></div><div><div class="err-title">${title}</div>${detail?`<div class="err-msg">${detail}</div>`:''}</div></div>`);
     }
