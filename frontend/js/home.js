@@ -327,7 +327,17 @@ async function fetchPreview(url) {
     /* ── COMPARTILHAR RESULTADO ── */
 function copyShareUrl() {
   const shareUrl = `https://desencurta.vercel.app/?url=${encodeURIComponent(window._lastRaw)}`;
-  navigator.clipboard.writeText(shareUrl).then(() => showToast('Link de compartilhamento copiado! ✓'));
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Desencurta',
+      text: 'Veja para onde esse link realmente leva:',
+      url: shareUrl
+    });
+  } else {
+    navigator.clipboard.writeText(shareUrl)
+      .then(() => showToast('Link de compartilhamento copiado! ✓'));
+  }
 }
 
 /* ── DETECTA ?url= NA ABERTURA DA PÁGINA ── */
