@@ -35,23 +35,51 @@
       setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    function submitForm() {
-      const name  = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const msg   = document.getElementById('form-msg').value.trim();
+    async function submitForm() {
+  const name  = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  const msg   = document.getElementById('form-msg').value.trim();
 
-      if (!name || !email || !msg) {
-        showToast('Preencha todos os campos.');
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showToast('E-mail inválido.');
-        return;
-      }
+  if (!name || !email || !msg) {
+    showToast('Preencha todos os campos.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('E-mail inválido.');
+    return;
+  }
 
-      /* Aqui você pode integrar com um backend ou serviço como Formspree */
-      /* Exemplo com Formspree: substitua ACTION pela sua URL */
-      /* fetch('https://formspree.io/f/SEU_ID', { method:'POST', body: new FormData(form) }) */
+  const WEBHOOK = 'https://discord.com/api/webhooks/1503052535760421014/YbVfklm3TvYDzFri3z2SeJklgJf_PpZIYu2SsvjiMtHK7jAS2-ggIuY3i2_dJJiz9jL1';
+
+  try {
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: null,
+        embeds: [{
+          title: '📬 Nova mensagem pelo formulário',
+          color: 0xe2e2e2,
+          fields: [
+            { name: '👤 Nome',     value: name,  inline: true  },
+            { name: '📧 E-mail',   value: email, inline: true  },
+            { name: '💬 Mensagem', value: msg,   inline: false }
+          ],
+          footer: { text: 'Desencurta — formulário de contato' },
+          timestamp: new Date().toISOString()
+        }]
+      })
+    });
+
+    showToast('Mensagem enviada! Responderemos em breve. ✓');
+    document.getElementById('form-name').value  = '';
+    document.getElementById('form-email').value = '';
+    document.getElementById('form-msg').value   = '';
+
+  } catch {
+    showToast('Erro ao enviar. Tente novamente.');
+  }
+
 
       showToast('Mensagem enviada! Responderemos em breve. ✓');
       document.getElementById('form-name').value  = '';

@@ -66,9 +66,10 @@
       return{checks,score,cls,label:score===4?'Seguro':score>=2?'Atenção':'Suspeito'};
     }
 
-    /* ── PREVIEW VIA BACKEND ── */
-    async function fetchPreview(url) {
+  /* ── PREVIEW VIA BACKEND ── */
+async function fetchPreview(url) {
   try {
+    
     // 1. Tenta o seu backend primeiro
     const res = await fetch(`${API_BASE}/preview?url=${encodeURIComponent(url)}`, {
       signal: AbortSignal.timeout(10000)
@@ -78,16 +79,32 @@
 
     // 2. Se não veio imagem, tenta o Microlink só para isso
     if (!data.image) {
+  try {
+    const cleanUrl = (() => {
       try {
-        const ml = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`, {
-          signal: AbortSignal.timeout(6000)
-        });
-        const mlJson = await ml.json();
-        if (mlJson.status === 'success' && mlJson.data?.image?.url) {
-          data.image = mlJson.data.image.url;
+        const u = new URL(url);
+        if (u.hostname.includes('youtube.com') || u.hostname.includes('youtu.be')) {
+          const v = u.searchParams.get('v') || u.pathname.replace('/', '');
+          if (v) return { type: 'youtube', id: v };
         }
-      } catch { /* sem imagem mesmo, tudo bem */ }
+        return { type: 'other', url };
+      } catch { return { type: 'other', url }; }
+    })();
+
+    if (cleanUrl.type === 'youtube') {
+      // Thumbnail pública do YouTube, sem precisar do Microlink
+      data.image = `https://img.youtube.com/vi/${cleanUrl.id}/maxresdefault.jpg`;
+    } else {
+      const ml = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(cleanUrl.url)}`, {
+        signal: AbortSignal.timeout(6000)
+      });
+      const mlJson = await ml.json();
+      if (mlJson.status === 'success' && mlJson.data?.image?.url) {
+        data.image = mlJson.data.image.url;
+      }
     }
+  } catch { /* sem imagem */ }
+}
 
     return data;
   } catch { return null; }
@@ -164,7 +181,8 @@
           </div>
           <div class="r-actions">
             <button class="btn-sm" onclick="copyUrl('${data.finalUrl.replace(/'/g,"\\'")}')"><span class="material-symbols-outlined">content_copy</span>Copiar</button>
-            <a href="${data.finalUrl}" target="_blank" rel="noopener noreferrer" class="btn-sm"><span class="material-symbols-outlined">open_in_new</span>Abrir</a>
+           <a href="${data.finalUrl}" target="_blank" rel="noopener noreferrer" class="btn-sm"><span class="material-symbols-outlined">open_in_new</span>Abrir</a>
+           <button class="btn-sm" onclick="copyShareUrl('${data.originalUrl?.replace(/'/g,"\\'")||raw.replace(/'/g,"\\'")}')"><span class="material-symbols-outlined">share</span>Compartilhar</button>
           </div>
         </div>
         ${previewHtml}
@@ -254,6 +272,7 @@
     /* ── EXPAND ── */
     async function expandUrl(){
       const raw=document.getElementById('url-input').value.trim();
+      window._lastRaw = raw;
       const btn=document.getElementById('btn-expand');
       if(!raw){document.getElementById('url-input').focus();return;}
       if(!isValidUrl(raw)){
@@ -305,4 +324,20 @@
     });
 
     if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-    renderHistory();
+    /* ── COMPARTILHAR RESULTADO ── */
+function copyShareUrl() {
+  const shareUrl = `https://desencurta.vercel.app/?url=${encodeURIComponent(window._lastRaw)}`;
+  navigator.clipboard.writeText(shareUrl).then(() => showToast('Link de compartilhamento copiado! ✓'));
+}
+
+/* ── DETECTA ?url= NA ABERTURA DA PÁGINA ── */
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const urlParam = params.get('url');
+  if (urlParam && isValidUrl(urlParam)) {
+    document.getElementById('url-input').value = urlParam;
+    setTimeout(() => expandUrl(), 500);
+  }
+});
+
+renderHistory();

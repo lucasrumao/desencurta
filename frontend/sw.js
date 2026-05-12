@@ -1,9 +1,11 @@
-const CACHE_NAME = 'desencurta-v3';
-const STATIC_ASSETS = ['/', '/index.html', '/manifest.json'];
+const CACHE_NAME = 'desencurta-v4';
+const STATIC_ASSETS = ['/'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(STATIC_ASSETS))
+      .catch(() => {}) // ignora falha no cache sem quebrar
   );
   self.skipWaiting();
 });
@@ -18,8 +20,14 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  if (e.request.url.includes('/expand')) return;
+  // Nunca faz cache de chamadas para a API
+  if (e.request.url.includes('/expand') ||
+      e.request.url.includes('/preview') ||
+      e.request.url.includes('microlink') ||
+      e.request.url.includes('img.youtube')) return;
+
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    caches.match(e.request)
+      .then(cached => cached || fetch(e.request).catch(() => cached))
   );
 });
