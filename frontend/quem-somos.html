@@ -13,6 +13,8 @@
 </head>
 <body>
 
+  <div class="noise-overlay"></div>
+
   <nav class="navbar">
     <div class="nav-inner">
       <a href="index.html" class="brand">
@@ -24,7 +26,7 @@
         <a href="como-funciona.html" class="nav-link">Como funciona</a>
         <a href="quem-somos.html" class="nav-link active">Quem somos</a>
       </div>
-      <button class="nav-burger" onclick="window.location.href='index.html'">
+      <button class="nav-burger" onclick="window.location.href='index.html'" aria-label="Home">
         <span class="material-symbols-outlined">home</span>
       </button>
     </div>
@@ -32,83 +34,68 @@
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero">
-      <!-- IMAGE PLACEHOLDER: foto de perfil circular ~120x120px -->
-      <div class="photo-ph">
-        <img class="hero-photo" src="assets/img/logo.png" alt="Desenvolvedor">
+    <section class="hero-section">
+      <div class="hero-img-wrap">
+        <img src="assets/img/foto-3.png" alt="" class="hero-img" />
+        <div class="hero-img-overlay">
+          <h1 class="hero-title">Veja para onde um link realmente leva</h1>
+          <p class="hero-subtitle">Transparência absoluta e segurança digital em um ecossistema minimalista desenhado para quem valoriza a clareza.</p>
+        </div>
       </div>
-      <h1 class="hero-title">Transparência como código.</h1>
-      <p class="hero-subtitle">Sou um desenvolvedor apaixonado por segurança digital e minimalismo. O Desencurta nasceu da necessidade de revelar o que se esconde atrás de URLs curtas e suspeitas.</p>
     </section>
 
-    <!-- BENTO -->
-    <section class="bento">
+    <section class="dev-section">
+      <div class="dev-text">
+        <span class="dev-eyebrow">O Desenvolvedor</span>
+        <h2 class="dev-title"><em>Minimalismo como filosofia de código.</em></h2>
+        <p class="dev-desc">Nascido da necessidade de simplificar a web, o Desencurta foi projetado com foco em remover o ruído digital. Cada linha de código segue o princípio da performance silenciosa e da estética refinada.</p>
+        <div class="dev-links">
+          <a class="dev-link" href="#" aria-label="GitHub"><span class="material-symbols-outlined">terminal</span></a>
+          <a class="dev-link" href="#" aria-label="Código"><span class="material-symbols-outlined">code</span></a>
+          <a class="dev-link" href="#" aria-label="Link"><span class="material-symbols-outlined">link</span></a>
+        </div>
+      </div>
+
+      <div class="dev-photo-wrap">
+        <!-- IMAGE PLACEHOLDER: foto quadrada ~600x600px -->
+        <img src="assets/img/foto-3.png" alt="Desenvolvedor" class="dev-photo" />
+        <div class="dev-floating-card glass-panel">
+          <span class="dev-floating-text">Design &<br/>Engenharia</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bento-section">
       <div class="bento-grid">
 
-        <!-- BIO -->
-        <div class="bcard col-7">
-          <span class="bcard-eyebrow">O Desenvolvedor</span>
-          <h3 class="bcard-title">Construído por quem usa</h3>
-          <p class="bcard-desc">Com foco em criar utilitários premium que sejam invisíveis quando não necessários, mas autoritários e precisos durante a interação. Cada linha de código aqui prioriza a integridade dos dados e a privacidade do usuário.</p>
-          <p class="bcard-desc" style="margin-top:16px">O Desencurta é meu projeto pessoal focado em devolver ao usuário o poder de escolha — saber para onde um link realmente aponta antes de clicar.</p>
-          <div class="bio-links">
-            <button class="bio-link solid"><span class="material-symbols-outlined">code</span>GitHub</button>
-            <button class="bio-link outline"><span class="material-symbols-outlined">link</span>LinkedIn</button>
-            <button class="bio-link outline"><span class="material-symbols-outlined">rss_feed</span>Blog</button>
-          </div>
+        <div class="bcard col-8">
+          <span class="material-symbols-outlined bcard-icon-lg">verified_user</span>
+          <h3 class="bcard-title">Nossa Missão</h3>
+          <p class="bcard-desc">Restaurar a confiança na navegação online. Revelamos o destino real de links complexos, permitindo que você veja a verdade antes mesmo do clique.</p>
         </div>
 
-        <!-- MISSÃO -->
-        <div class="bcard col-5" style="display:flex;flex-direction:column;gap:20px">
-          <div style="flex:1">
-            <span class="bcard-eyebrow">Missão</span>
-            <h3 class="bcard-title" style="font-size:1.3rem">Segurança sem atrito</h3>
-            <p class="bcard-desc">Desvendar redirecionamentos maliciosos antes que eles toquem seu navegador. Segurança não deve ser um obstáculo, mas um alicerce.</p>
-          </div>
-          <div class="bcard inv" style="border-radius:1rem;padding:24px">
-            <div class="stat">
-              <div class="stat-num">100%</div>
-              <div class="stat-label">Independente & Transparente</div>
-            </div>
-          </div>
+        <div class="bcard col-4">
+          <h3 class="bcard-title">A Stack</h3>
+          <ul class="stack-list">
+            <li class="stack-item"><span class="stack-num">1</span><span class="stack-label">Java + Spring Boot</span></li>
+            <li class="stack-item"><span class="stack-num">2</span><span class="stack-label">Jsoup (Preview)</span></li>
+            <li class="stack-item"><span class="stack-num">3</span><span class="stack-label">HTML / CSS / JS puro</span></li>
+          </ul>
         </div>
 
-        <!-- IMAGEM WIDE -->
-        <div class="bcard col-12" style="padding:0;overflow:hidden;min-height:200px">
-          <!-- IMAGE PLACEHOLDER: imagem wide inspiracional ~1000x200px -->        
-          <div class="full-img">
-            <img src="assets/img/foto-3.png" style="width:100%;height:100%;object-fit:cover" />
-            <div class="full-img-overlay">
-              <div class="full-img-quote">Codificado para proteção, desenhado para clareza.</div>
-            </div>
+        <div class="bcard col-6 bcard-relative">
+          <div class="bcard-content">
+            <h3 class="bcard-title"><em>Open Source</em></h3>
+            <p class="bcard-desc">Código aberto para transparência total. Contribua com o futuro da privacidade na web.</p>
+            <button class="bcard-link-btn">VER REPOSITÓRIO <span class="material-symbols-outlined" style="font-size:16px">north_east</span></button>
           </div>
-          
+          <span class="bcard-bg-icon material-symbols-outlined">code</span>
         </div>
 
-        <!-- STACK -->
-        <div class="bcard col-4" style="text-align:center">
-          <span class="material-symbols-outlined bcard-icon-lg">terminal</span>
-          <h4 class="bcard-title" style="font-size:1.2rem">Stack</h4>
-          <div class="tag-list" style="justify-content:center">
-            <span class="tag">Java</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">HTML/CSS/JS</span>
-          </div>
-        </div>
-
-        <!-- OPEN SOURCE -->
-        <div class="bcard col-4" style="text-align:center">
-          <span class="material-symbols-outlined bcard-icon-lg">public</span>
-          <h4 class="bcard-title" style="font-size:1.2rem">Open Source</h4>
-          <p class="bcard-desc">Código aberto para transparência total. Contribua com o futuro da privacidade na web.</p>
-        </div>
-
-        <!-- PRIVACIDADE -->
-        <div class="bcard col-4" style="text-align:center">
-          <span class="material-symbols-outlined bcard-icon-lg">shield</span>
-          <h4 class="bcard-title" style="font-size:1.2rem">Privacidade</h4>
-          <div class="tag-list" style="justify-content:center">
+        <div class="bcard col-6">
+          <h3 class="bcard-title">Privacidade First</h3>
+          <p class="bcard-desc">Zero tracking. Zero cookies de terceiros. Seus dados de navegação são efêmeros por design. O que é seu, permanece seu.</p>
+          <div class="tag-list">
             <span class="tag">Zero Logs</span>
             <span class="tag">Sem Anúncios</span>
             <span class="tag">Sem Rastreamento</span>

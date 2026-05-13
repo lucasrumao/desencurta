@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Desencurta</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <style>
+        /* ===== CSS Variables (mesmas cores e espaçamentos do Tailwind config) ===== */
+        :root {
+            --color-on-secondary-container: #b7b5b4;
+            --color-on-tertiary-container: #636468;
+            --color-primary-fixed: #e2e2e2;
+            --color-on-secondary-fixed: #1b1c1c;
+            --color-on-tertiary: #2f3034;
+            --color-surface: #141313;
+            --color-surface-tint: #c6c6c6;
+            --color-primary: #ffffff;
+            --color-surface-container: #201f1f;
+            --color-surface-dim: #141313;
+            --color-on-surface: #e6e1e1;
+            --color-surface-variant: #363434;
+            --color-on-background: #e6e1e1;
+            --color-on-error-container: #ffdad6;
+            --color-on-error: #690005;
+            --color-outline: #8e9192;
+            --color-primary-container: #e2e2e2;
+            --color-surface-container-lowest: #0f0e0e;
+            --color-inverse-primary: #5d5f5f;
+            --color-primary-fixed-dim: #c6c6c6;
+            --color-secondary-fixed-dim: #c8c6c5;
+            --color-on-surface-variant: #c4c7c8;
+            --color-on-secondary: #303030;
+            --color-tertiary-fixed-dim: #c6c6cb;
+            --color-inverse-on-surface: #323030;
+            --color-secondary-fixed: #e4e2e1;
+            --color-surface-container-highest: #363434;
+            --color-tertiary-container: #e2e1e6;
+            --color-background: #141313;
+            --color-on-primary: #2f3131;
+            --color-on-primary-fixed: #1a1c1c;
+            --color-on-primary-fixed-variant: #454747;
+            --color-inverse-surface: #e6e1e1;
+            --color-tertiary: #fffeff;
+            --color-on-secondary-fixed-variant: #474746;
+            --color-secondary-container: #474746;
+            --color-tertiary-fixed: #e3e2e7;
+            --color-on-tertiary-fixed: #1a1b1f;
+            --color-outline-variant: #444748;
+            --color-secondary: #c8c6c5;
+            --color-surface-bright: #3a3939;
+            --color-on-primary-container: #636465;
+            --color-on-tertiary-fixed-variant: #46464b;
+            --color-surface-container-high: #2b2a2a;
+            --color-surface-container-low: #1c1b1b;
+            --color-error: #ffb4ab;
+            --color-error-container: #93000a;
+
+            --spacing-margin-mobile: 20px;
+            --spacing-gutter: 24px;
+            --spacing-unit: 8px;
+            --spacing-margin-desktop: 64px;
+            --spacing-container-max: 1200px;
+
+            --font-headline-lg: "Newsreader", serif;
+            --font-headline-md: "Newsreader", serif;
+            --font-body-lg: "Inter", sans-serif;
+            --font-display-xl: "Newsreader", serif;
+            --font-body-md: "Inter", sans-serif;
+            --font-label-sm: "Inter", sans-serif;
+        }
+
+        /* ===== Reset básico ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { -webkit-font-smoothing: antialiased; }
+
+        /* ===== Material Symbols configuração ===== */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* ===== Efeitos especiais (já convertidos) ===== */
+        .glass-panel {
+            background: rgba(20, 19, 19, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .noise-texture {
+            position: relative;
+        }
+        .noise-texture::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+        .pearl-shadow {
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .hairline-border {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ===== Backgrounds ===== */
+        .bg-surface { background-color: var(--color-surface); }
+        .bg-surface-container { background-color: var(--color-surface-container); }
+        .bg-surface-container-lowest { background-color: var(--color-surface-container-lowest); }
+        .bg-surface-container-low { background-color: var(--color-surface-container-low); }
+        .bg-surface-container-high { background-color: var(--color-surface-container-high); }
+        .bg-surface-container-highest { background-color: var(--color-surface-container-highest); }
+        .bg-primary-fixed { background-color: var(--color-primary-fixed); }
+        .bg-primary-container { background-color: var(--color-primary-container); }
+        .bg-white\/5 { background-color: rgba(255,255,255,0.05); }
+        .bg-white\/10 { background-color: rgba(255,255,255,0.10); }
+        .bg-white\/20 { background-color: rgba(255,255,255,0.20); }
+
+        /* ===== Text colors ===== */
+        .text-primary { color: var(--color-primary); }
+        .text-on-surface { color: var(--color-on-surface); }
+        .text-on-surface-variant { color: var(--color-on-surface-variant); }
+        .text-on-primary-fixed { color: var(--color-on-primary-fixed); }
+        .text-on-primary-container { color: var(--color-on-primary-container); }
+
+        /* ===== Tipografia (família + tamanho/line-height) ===== */
+        .font-body-md { font-family: var(--font-body-md); }
+        .font-body-lg { font-family: var(--font-body-lg); }
+        .font-headline-md { font-family: var(--font-headline-md); }
+        .font-headline-lg { font-family: var(--font-headline-lg); }
+        .font-display-xl { font-family: var(--font-display-xl); }
+        .font-label-sm { font-family: var(--font-label-sm); }
+
+        .text-body-md { font-size: 16px; line-height: 1.6; font-weight: 400; }
+        .text-body-lg { font-size: 18px; line-height: 1.6; font-weight: 400; }
+        .text-headline-md { font-size: 32px; line-height: 1.3; font-weight: 400; }
+        .text-headline-lg { font-size: 40px; line-height: 1.2; font-weight: 400; }
+        .text-display-xl { font-size: 64px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 400; }
+        .text-label-sm { font-size: 13px; line-height: 1.2; letter-spacing: 0.05em; font-weight: 500; }
+
+        /* ===== Seleção ===== */
+        body::selection {
+            background-color: var(--color-primary-fixed);
+            color: var(--color-on-primary-fixed);
+        }
+
+        /* ===== Espaçamento e dimensionamento ===== */
+        .px-margin-desktop { padding-left: var(--spacing-margin-desktop); padding-right: var(--spacing-margin-desktop); }
+        .max-w-container-max { max-width: var(--spacing-container-max); }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .gap-gutter { gap: var(--spacing-gutter); }
+
+        .h-20 { height: 5rem; }
+        .w-12 { width: 3rem; } .h-12 { height: 3rem; }
+        .w-8 { width: 2rem; } .h-8 { height: 2rem; }
+
+        .p-10 { padding: 2.5rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .pb-1 { padding-bottom: 0.25rem; }
+        .pt-32 { padding-top: 8rem; }
+        .pb-24 { padding-bottom: 6rem; }
+
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-24 { margin-bottom: 6rem; }
+        .mb-32 { margin-bottom: 8rem; }
+        .mt-0 { margin-top: 0; }
+
+        .gap-16 { gap: 4rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-2 { gap: 0.5rem; }
+
+        .space-y-8 > * + * { margin-top: 2rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+
+        /* ===== Posicionamento ===== */
+        .fixed { position: fixed; }
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .top-0 { top: 0; }
+        .z-50 { z-index: 50; }
+        .inset-0 { inset: 0; }
+        .-bottom-6 { bottom: -1.5rem; }
+        .-right-6 { right: -1.5rem; }
+        .bottom-12 { bottom: 3rem; }
+        .left-12 { left: 3rem; }
+
+        /* ===== Display / Flex / Grid ===== */
+        .hidden { display: none; }
+        .flex { display: flex; }
+        .inline-flex { display: inline-flex; }
+        .grid { display: grid; }
+        .block { display: block; }
+        .justify-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .h-\[450px\] { height: 450px; }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-lg { max-width: 32rem; }
+        .max-w-xl { max-width: 36rem; }
+
+        /* ===== Bordas ===== */
+        .border { border: 1px solid; }
+        .border-b { border-bottom: 1px solid; }
+        .border-b-2 { border-bottom-width: 2px; }
+        .border-white\/5 { border-color: rgba(255,255,255,0.05); }
+        .border-white\/10 { border-color: rgba(255,255,255,0.10); }
+        .border-white\/20 { border-color: rgba(255,255,255,0.20); }
+        .border-primary { border-color: var(--color-primary); }
+        .border-primary\/20 { border-color: rgba(255,255,255,0.20); } /* primary é #fff, então 20% = rgba 0.2 */
+        .border-outline-variant\/10 { border-color: rgba(68,71,72,0.10); }
+
+        /* ===== Border Radius ===== */
+        .rounded-full { border-radius: 9999px; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+
+        /* ===== Overflow ===== */
+        .overflow-hidden { overflow: hidden; }
+
+        /* ===== Object fit ===== */
+        .object-cover { object-fit: cover; }
+
+        /* ===== Filtros e transformações ===== */
+        .grayscale { filter: grayscale(100%); }
+        .brightness-50 { filter: brightness(0.5); }
+        .contrast-125 { filter: contrast(1.25); }
+        .transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .duration-700 { transition-duration: 700ms; }
+        .duration-300 { transition-duration: 300ms; }
+        .duration-200 { transition-duration: 200ms; }
+
+        /* ===== Hover / Focus / Active ===== */
+        .hover\:text-primary:hover { color: var(--color-primary); }
+        .hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
+        .hover\:bg-surface-container:hover { background-color: var(--color-surface-container); }
+        .hover\:brightness-110:hover { filter: brightness(1.1); }
+        .hover\:border-primary:hover { border-color: var(--color-primary); }
+        .active\:scale-95:active { transform: scale(0.95); }
+
+        /* ===== Group hover (para o hero e lista stack) ===== */
+        .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
+        .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
+        .group:hover .group-hover\:text-primary { color: var(--color-primary); }
+
+        /* ===== Texto decorativo ===== */
+        .tracking-tight { letter-spacing: -0.025em; }
+        .tracking-wider { letter-spacing: 0.05em; }
+        .italic { font-style: italic; }
+        .uppercase { text-transform: uppercase; }
+        .leading-tight { line-height: 1.25; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .text-\[160px\] { font-size: 160px; }
+        .text-\[12px\] { font-size: 12px; }
+        .opacity-20 { opacity: 0.2; }
+
+        /* ===== Aspect ratio ===== */
+        .aspect-square { aspect-ratio: 1 / 1; }
+
+        /* ===== Gradiente customizado (substituto do bg-gradient-to-t) ===== */
+        .overlay-gradient {
+            background: linear-gradient(to top, var(--color-surface), transparent, transparent);
+        }
+
+        /* ===== Responsivo (md = 768px) ===== */
+        @media (min-width: 768px) {
+            .md\:flex { display: flex; }
+            .md\:hidden { display: none; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .md\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+            .md\:col-span-8 { grid-column: span 8 / span 8; }
+            .md\:col-span-4 { grid-column: span 4 / span 4; }
+            .md\:col-span-6 { grid-column: span 6 / span 6; }
+            .md\:flex-row { flex-direction: row; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md noise-texture">
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 w-full glass-panel border-b border-white/5 h-20">
+    <div class="flex justify-between items-center w-full px-margin-desktop h-full max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md text-primary tracking-tight">Desencurta</div>
+        <div class="hidden md:flex items-center gap-gutter">
+            <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">History</a>
+            <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">How it works</a>
+            <a class="text-primary font-body-md border-b-2 border-primary pb-1" href="#">About us</a>
+        </div>
+        <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-full font-label-sm hover:brightness-110 transition-all active:scale-95">
+            Sign In
+        </button>
+    </div>
+</nav>
+
+<main class="pt-32 pb-24">
+    <!-- Hero Section -->
+    <section class="max-w-container-max mx-auto px-margin-desktop mb-24">
+        <div class="relative w-full h-[450px] rounded-xl overflow-hidden pearl-shadow group">
+            <img alt="Technology and safety" class="w-full h-full object-cover grayscale brightness-50 transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXj1m02Rb3zhznZ84hXuA9U2dN7xKCNWxF4KENEGU1tirKuCHqyuQRomBoe8wxDd5vCaFZ8VvWyN2IIurfqNhFdYWo86SCKreJB6oOiHvbo2FZt50qvsmn7K-iAb9MlEKV9N-OTALknnqM3UjFbf7AsGSDy72lpmtQbDi4peT0XqZEvBJpBhJtakY1c1-erzFTiDFeoFzJV7pRfJr6CUaVk43-PSZkFG_mkAe0tdeZkwobBTM35E36sE3HqaK_g7ju4CZw2kQxSwZQ"/>
+            <div class="absolute inset-0 overlay-gradient"></div>
+            <div class="absolute bottom-12 left-12 max-w-2xl">
+                <h1 class="font-display-xl text-display-xl text-primary mb-6">Veja para onde um link realmente leva</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Transparência absoluta e segurança digital em um ecossistema minimalista desenhado para quem valoriza a clareza.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Section -->
+    <section class="max-w-container-max mx-auto px-margin-desktop mb-32 grid md:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+            <div class="inline-block px-3 py-1 bg-surface-container-high border border-white/10 rounded-full text-label-sm text-on-surface-variant tracking-wider uppercase">O Desenvolvedor</div>
+            <h2 class="font-headline-lg text-headline-lg text-primary italic">Minimalismo como filosofia de código.</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+                Nascido da necessidade de simplificar a web, o Desencurta foi projetado por uma mente focada em remover o ruído digital. Cada linha de código segue o princípio da "Quiet Luxury": performance silenciosa e estética refinada.
+            </p>
+            <div class="flex gap-4">
+                <a class="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 text-primary hover:bg-white/5 transition-all" href="#">
+                    <span class="material-symbols-outlined">terminal</span>
+                </a>
+                <a class="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 text-primary hover:bg-white/5 transition-all" href="#">
+                    <span class="material-symbols-outlined">code</span>
+                </a>
+                <a class="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 text-primary hover:bg-white/5 transition-all" href="#">
+                    <span class="material-symbols-outlined">link</span>
+                </a>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="aspect-square rounded-2xl overflow-hidden hairline-border pearl-shadow">
+                <img alt="Developer Portrait" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVwZ79TSslXbxpiB8R0sHGKgP4QHpkxhEj5ertVGOtzmLWnI4N9ERUGuQ-lUgAI21kEdXXnba12faP9FyWJB8C11iScUDekNLE8x8EuPH97aCW_o57Pmk-ukaoHvBQ8C43uj0gFXJiuzTnSFL-pnxvtvLWQRtY6K5veShzi9fOukcfqGYiUcv1v5aKAIujPFFx3IR_fdRSHlVMoABtrwNalo7P_bhieX5hERZL_ZncHBNyUBxqU84tnSOiAyhNsWsotHpDAUuf1gAF"/>
+            </div>
+            <div class="absolute -bottom-6 -right-6 p-8 glass-panel rounded-xl hairline-border">
+                <span class="block text-primary font-headline-md leading-tight">Design &amp;<br/>Engenharia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Sections -->
+    <section class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <!-- Mission Card -->
+            <div class="md:col-span-8 bg-surface-container-low p-10 rounded-2xl hairline-border flex flex-col justify-between group hover:bg-surface-container transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary text-4xl mb-12">verified_user</span>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4">Nossa Missão</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Restaurar a confiança na navegação online. Reduzimos links complexos a identidades puras, permitindo que você veja a verdade antes mesmo do clique.</p>
+                </div>
+            </div>
+
+            <!-- Stack Card -->
+            <div class="md:col-span-4 bg-surface-container-low p-10 rounded-2xl hairline-border hover:bg-surface-container transition-colors duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-8">The Stack</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4 group">
+                        <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-highest text-primary transition-transform group-hover:scale-110">1</span>
+                        <span class="text-on-surface-variant group-hover:text-primary transition-colors">Rust Core Logic</span>
+                    </li>
+                    <li class="flex items-center gap-4 group">
+                        <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-highest text-primary transition-transform group-hover:scale-110">2</span>
+                        <span class="text-on-surface-variant group-hover:text-primary transition-colors">Edge Computing</span>
+                    </li>
+                    <li class="flex items-center gap-4 group">
+                        <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container-highest text-primary transition-transform group-hover:scale-110">3</span>
+                        <span class="text-on-surface-variant group-hover:text-primary transition-colors">PostgreSQL Solid State</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Open Source -->
+            <div class="md:col-span-6 bg-surface-container-low p-10 rounded-2xl hairline-border hover:bg-surface-container transition-colors duration-300 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4 italic">Open Source</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8">Código aberto para transparência total. Contribua com o futuro da privacidade na web.</p>
+                    <button class="flex items-center gap-2 text-primary font-label-sm border-b border-primary/20 pb-1 hover:border-primary transition-all">
+                        VER REPOSITÓRIO <span class="material-symbols-outlined">north_east</span>
+                    </button>
+                </div>
+                <span class="absolute -bottom-10 -right-10 material-symbols-outlined text-[160px] text-white/5 opacity-20">code</span>
+            </div>
+
+            <!-- Privacy -->
+            <div class="md:col-span-6 bg-surface-container-low p-10 rounded-2xl hairline-border hover:bg-surface-container transition-colors duration-300">
+                <h3 class="font-headline-md text-headline-md text-primary mb-4">Privacidade First</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-8">Zero tracking. Zero cookies de terceiros. Seus dados de navegação são efêmeros por design. O que é seu, permanece seu.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium border border-white/5">GDPR Compliant</span>
+                    <span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium border border-white/5">SSL Encryption</span>
+                    <span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-[12px] font-medium border border-white/5">No Data Selling</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/10">
+    <div class="flex flex-col md:flex-row justify-between items-center w-full py-12 px-margin-desktop max-w-container-max mx-auto gap-gutter">
+        <div class="font-headline-md text-headline-md text-primary">Desencurta</div>
+        <div class="flex gap-8">
+            <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Privacy</a>
+            <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Terms</a>
+            <a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-200" href="#">Contact</a>
+        </div>
+        <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Desencurta. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
